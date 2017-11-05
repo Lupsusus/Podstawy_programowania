@@ -17,7 +17,7 @@ int main()
 	for (int i = 0; i < n; i++) { // to jest sortowanie babelkowe
 		for (j = k; j < n - (i + 1); j++) // kazdy element jest sprawdzany czy jest mniejszy od najmnijeszego i przesuwany na nizsze miejsce w tabeli
 		{
-			if (T[j + 1] < T[j])
+			if (T[j + 1] > T[j])
 			{
 				pom = T[j + 1]; // zmienna pom przechowuje element tablicy w momencie wpisania na jego miejsce mniejszej wartosci
 				T[j + 1] = T[j];
@@ -26,7 +26,7 @@ int main()
 		}
 		for (k = j - 1; k > i; k--)
 		{
-			if (T[k] < T[k - 1])
+			if (T[k] > T[k - 1])
 			{
 				pom = T[k];
 				T[k] = T[k - 1];
