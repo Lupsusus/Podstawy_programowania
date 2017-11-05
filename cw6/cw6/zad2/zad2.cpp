@@ -26,6 +26,7 @@ int main()
 	Pracownik T[j];
 	float maxpb = 0;
 	float minpb = 0;
+	float suma = 0;
 	for (int i = 0; i < j; i++) {
 		cout << "Nowy pracownik: " << endl;
 		cout << "Podaj nazwisko: "; cin >> n.nazwisko; cout << endl;
@@ -47,6 +48,7 @@ int main()
 	cout << endl << endl << endl;
 	for (int i = 0; i < j; i++) {
 		n = T[i];
+		suma = suma + n.brutto;
 		if (n.brutto > maxpb) {
 			maxpb = n.brutto;
 		}
@@ -57,6 +59,7 @@ int main()
 			minpb = n.brutto;
 		}
 	}
+	cout << "Suma pensji brutto: " << suma << endl;
 	cout << "Minimalna: " << minpb << endl;
 	cout << "Maksymalna: " << maxpb << endl;
 	cout << "Osoby palace: " << endl;

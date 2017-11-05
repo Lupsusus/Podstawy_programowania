@@ -60,9 +60,9 @@ int main()
 				k++;
 		}
 	}
-	cout << "Pracownicy z placa powyzej sredniej: " << endl;
+	cout << endl << "Pracownicy z placa powyzej sredniej: " << endl;
 	
-	for (int i = 0; i < j; i++) {
+	for (int i = 0; i < k; i++) {
 		n = Tsr[i];
 		cout << n.nazwisko << endl;
 		cout << n.adres << endl;
