@@ -6,21 +6,45 @@
 
 #include "stdafx.h"
 #include <iostream>
+#include <stdlib.h>
 using namespace std;
-
-int main()
+struct stos
 {
-	int *T;         // tworzymy wskaźnik
-	int i, n;
-	cout << "Podaj najwieksza potege wielomianu:";
-	cin >> n;        // odczytujemy ilość komórek
-	T = new int[n];  // tworzymy tablicę dynamiczną o n komórkach
-	for (i = 0; i <= n; i++)
+	int dane;// pole z danymi
+	stos *wsk;// wskaźnik pokazujący na element kolejny
+};
+int main() {
+	stos * wierzcholek = NULL;// deklaracja wierzchołka
+	int liczba, n, x, z = 0;;// zmienna do wprowadzania danych
+	stos* temp;// zmienna pomocnicza
+	int wynik = 0;
+	// dodawanie elementu do stosu
+	cout << "Podaj liczbe: ";
+	cin >> liczba;
+	while(liczba != 0)
 	{
-		cout << "Podaj wspolczynnik potegi " << i << ": ";
-		cin >> T[i];   // wczytujemy kolejne komórki
+		temp = wierzcholek;
+		wierzcholek = new stos;// alokacja nowego elementu, który teraz będzie wierzchołkiem
+		(*wierzcholek).dane = liczba;// wprowadzenie danej
+		(*wierzcholek).wsk = temp;// powiązanie nowego elementu z elementem, który wcześniej był wierzchołkiem
+		cout << "Podaj liczbe: ";
+		cin >> liczba;
 	}
-	system("pause");
-    return 0;
+	temp = wierzcholek;
+	cout << "Podaj liczbe do sprawdzenia: " << endl;
+	cin >> x;
+	while (temp != NULL)
+	{
+		if (x == (*temp).dane) {
+			z = 1;
+		}
+		temp = (*temp).wsk;
+	}
+	if (z != 0) {
+		cout << "Podana liczba wystepuje w stosie.";
+	}
+	else {
+		cout << "Podana liczba nie wystepuje w stosie.";
+	}
+	system("PAUSE");
 }
-
