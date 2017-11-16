@@ -33,7 +33,7 @@ int main()
 	}
 	cout << endl;
 	cout << endl;
-	sort(T, T + n, greater < int >());
+	sort(T, T + n, greater < float >());
 	cout << "Tablica posortowana malejaco: " << endl;
 	for (int i = 0; i<n; i++)
 	{

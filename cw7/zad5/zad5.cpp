@@ -9,25 +9,25 @@
 using namespace std;
 struct stos
 {
-	int dane;// pole z danymi
-	stos *wsk;// wskaźnik pokazujący na element kolejny
+	int dane;
+	stos *wsk;
 };
 int main(){
-stos * wierzcholek= NULL;// deklaracja wierzchołka
-int liczba, n, x;// zmienna do wprowadzania danych
-stos* temp;// zmienna pomocnicza
+stos * wierzcholek= NULL;
+int liczba, n, x;
+stos* temp;
 int wynik = 0;
 cout << "Podaj najwieksza potege wielomianu:";
 cin >> n;
-// dodawanie elementu do stosu
+
 for(int i=0;i<n+1;i++)
 {
 	temp= wierzcholek;
-	wierzcholek = new stos;// alokacja nowego elementu, który teraz będzie wierzchołkiem
+	wierzcholek = new stos;
 	cout << "Podaj wspolczynnik potegi " << i << ": ";
 	cin>>liczba;
-	(*wierzcholek).dane=liczba;// wprowadzenie danej
-	(*wierzcholek).wsk=temp;// powiązanie nowego elementu z elementem, który wcześniej był wierzchołkiem
+	(*wierzcholek).dane=liczba;
+	(*wierzcholek).wsk=temp;
 }
 temp=wierzcholek; 
 cout << "Podaj x dla ktorego ma zostac wyznaczona wartosc wielomianu: ";
