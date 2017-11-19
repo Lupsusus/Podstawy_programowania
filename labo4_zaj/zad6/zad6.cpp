@@ -1,6 +1,6 @@
 //Dane są dwa napisy.Napisz program, który porówna te dwa napisy
 //w poszukiwaniu pierwszych identycznych znaków i policzy ile jest znaków, które się pokrywają.
-//Na koniec program wypisze najdluzszy podciąg, który został znaleziony.
+//Na koniec program wypisze podciąg, który został znaleziony.
 
 #include "stdafx.h"
 #include <windows.h>
@@ -13,8 +13,8 @@ using namespace std;
 int main()
 
 {
-	string w1, w2, wsp;
-	int  i = 0, j = 0, k = 0, il = 0;;
+	string w1, w2, wsp, wynik[100];
+	int  i = 0, j = 0, k = 0, il = 0, z = 0;
 	cout << "Podaj pierwszy ciag" << endl;
 	getline(cin, w1);
 	cout << "drugi" << endl;
@@ -40,11 +40,9 @@ int main()
 					{
 						wsp.erase(k, 1);
 						il--;
-
 					}
 				}
 			}
-
 		}
 	cout << "Znaki pokrywajace sie to " << wsp << " jest ich " << il << endl;
 	system("pause");
