@@ -12,7 +12,8 @@ int main()
 	cout << "Podaj n: ";
 	cin >> n;
 
-	float tab[n];
+	float *tab;
+	tab = new float[n];
 	float pom;
 	int licz = 0;
 
