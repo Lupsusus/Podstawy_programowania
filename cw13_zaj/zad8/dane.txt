@@ -1,0 +1,3 @@
+bulki; 5; 1.5;
+jajka; 3; 3;
+sledzie; 2; 1;
