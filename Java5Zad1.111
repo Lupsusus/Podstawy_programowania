@@ -1,0 +1,134 @@
+Zad1.java
+ 
+package zad1;
+ 
+import java.util.Scanner;
+ 
+public class Zad1 {
+    public static void main(String[] args) throws MojWyjatek{
+        Ulamek U1;
+        Ulamek U2;
+        Ulamek pom;
+        Ulamek pom2;
+        int l;
+        int m;
+        Scanner scan = new Scanner(System.in);
+        System.out.print("Podaj licznik: ");
+        l = scan.nextInt();
+        System.out.print("Podaj mianownik: ");
+        m = scan.nextInt();
+        U1 = new Ulamek(l, m);
+        pom = new Ulamek(l, m);
+        pom2 = new Ulamek(l, m);
+        System.out.print("Podaj licznik: ");
+        l = scan.nextInt();
+        System.out.print("Podaj mianownik: ");
+        m = scan.nextInt();
+        U2 = new Ulamek(l, m);
+        System.out.println("Ułamek 1:");
+        U1.wypisz();
+        System.out.println("Ułamek 2:");
+        U2.wypisz();
+        System.out.println("Dodawanie ułamków w toku...\nOto wynik:");
+        pom.dodaj(U2);
+        pom.wypisz();
+        System.out.println("Dzielenie ułamków w toku...\nOto wynik:");
+        pom2.dziel(U2);
+        pom2.wypisz();
+        System.out.println("Pierwiastek z ułamka 1: " + U1.pierwiastek());
+        System.out.println("Pierwiastek z ułamka 2: " + U2.pierwiastek());
+        System.out.println("Ułamek 1 skrócony: ");
+        U1.skroc().wypisz();
+        System.out.println("Ułamek 2 skrócony: ");
+        U2.skroc().wypisz();
+    }
+}
+///////////////////////////////////////////////////////////////////////
+
+Ulamek.java
+ 
+package zad1;
+ 
+public class Ulamek {
+    private int licznik;
+    private int mianownik;
+    
+    public Ulamek(int l, int m) throws MojWyjatek{
+        if(l < 0) throw new MojWyjatek("Licznik nie może być mniejszy niż zero!");
+        licznik = l;
+        if(m == 0) throw new MojWyjatek("Mianownik nie może być równy zero!");
+        if(m < 0) throw new MojWyjatek("Mianownik nie może być mniejszy niż zero!");
+        mianownik = m;
+    }
+    
+    public int NWD(int x, int y){
+        int z = -1;
+        if(x < y){
+            z = x;
+            x = y;
+            y = z;
+        }
+        while(x != y){
+            z = x - y;
+            if(z > y)
+                x = z;
+            else{
+                x = y;
+                y = z;
+            }
+        }
+        return x;
+    }
+    
+    public int NWW(int x, int y){
+        System.out.println("NWD: " + (x*y)/NWD(x, y));
+        return (x*y)/NWD(x, y);
+    }
+    
+    public void wypisz(){
+        System.out.println(licznik + "/" + mianownik);
+    }
+    
+    public double oblicz(){
+        double wynik = (double)licznik;
+        wynik /= (double)mianownik;
+        return wynik;
+    }
+    
+    public Ulamek dodaj(Ulamek u){
+        int nww = NWW(mianownik, u.mianownik);
+        int l = nww / u.mianownik * u.licznik;
+        licznik = nww / mianownik * licznik + l;
+        mianownik  = nww;
+        return this;
+    }
+    
+    public Ulamek dziel(Ulamek u){
+        licznik *= u.mianownik;
+        mianownik *= u.licznik;
+        return this;
+    }
+    
+    public double pierwiastek(){
+        return Math.sqrt((double)licznik)/Math.sqrt((double)mianownik);
+    }
+    
+    public Ulamek skroc(){
+        int nwd = NWD(licznik, mianownik);
+        licznik /= nwd;
+        mianownik /= nwd;
+        return this;
+    }
+}
+ 
+ ////////////////////////////////////////////////////////////////////////////////////
+ 
+MojWyjatek.java
+ 
+package zad1;
+ 
+public class MojWyjatek extends Exception{
+    public MojWyjatek(String tekst){
+        super(tekst);
+    }
+}
